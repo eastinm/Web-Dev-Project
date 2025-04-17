@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Slot Machine</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #222;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .slot-machine {
+      background: #444;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+
+    .reels {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .reel {
+      font-size: 50px;
+      width: 80px;
+      height: 80px;
+      margin: 0 10px;
+      background: #fff;
+      color: #000;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    button {
+      padding: 10px 30px;
+      font-size: 18px;
+      border: none;
+      background: #00c853;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #00b342;
+    }
+
+    #message {
+      margin-top: 20px;
+      font-size: 20px;
+      height: 24px;
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html"> Home Page</a>
+  <br>
+  <a href="scratch.html"> Scratch Page </a>
+  <h1>🎰 Slot Machine 🎰</h1>
+
+  <div class="slot-machine">
+    <div class="reels">
+      <div class="reel" id="reel1">🍒</div>
+      <div class="reel" id="reel2">🍋</div>
+      <div class="reel" id="reel3">🍊</div>
+    </div>
+    <button onclick="spin()">Spin</button>
+    <div id="message"></div>
+  </div>
+
+  <script>
+    const symbols = ["🍒", "🍋", "🍊", "🍇", "🔔", "💎"];
+
+    function getRandomSymbol() {
+      return symbols[Math.floor(Math.random() * symbols.length)];
+    }
+
+    function spin() {
+      const reel1 = getRandomSymbol();
+      const reel2 = getRandomSymbol();
+      const reel3 = getRandomSymbol();
+
+      document.getElementById("reel1").textContent = reel1;
+      document.getElementById("reel2").textContent = reel2;
+      document.getElementById("reel3").textContent = reel3;
+
+      const message = document.getElementById("message");
+
+      if (reel1 === reel2 && reel2 === reel3) {
+        message.textContent = "🎉 You win! 🎉";
+      } else {
+        message.textContent = "Try again!";
+      }
+    }
+  </script>
+
+</body>
+</html>
